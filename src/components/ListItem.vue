@@ -14,7 +14,7 @@ export default {
     name: "list-item",
     props: ['childEnergyMix', 'fromDate', 'toDate'],
     components: {
-        "fuel-item": FuelItem
+        "fuel-item": FuelItem   
     }
 }
 </script>
