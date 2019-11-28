@@ -1,6 +1,8 @@
 <template>
     <div>
-        <fuel-item></fuel-item>
+        <ul>
+            <fuel-item v-for="(fuel, index) in childEnergyMix" :fuel="fuel" :key="index"></fuel-item>
+        </ul>
     </div>
 </template>
 
@@ -9,6 +11,7 @@ import FuelItem from './FuelItem';
 
 export default {
     name: "list-item",
+    props: ['childEnergyMix'],
     components: {
         "fuel-item": FuelItem
     }

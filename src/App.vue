@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <list-item></list-item>
+    <h1>Energy Mix UK</h1>
+    <list-item v-bind:childEnergyMix="energyMix"></list-item>
   </div>
 </template>
 

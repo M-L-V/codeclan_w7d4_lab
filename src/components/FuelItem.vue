@@ -1,12 +1,13 @@
 <template>
-    <div>
-        Hi
-    </div>
+    <li>
+        {{fuel}}
+    </li>
 </template>
 
 <script>
 export default {
-    name: "fuel-item"
+    name: "fuel-item",
+    props: ['fuel']
 }
 </script>
 
