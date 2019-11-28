@@ -1,17 +1,28 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <list-item></list-item>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import ListItem from './components/ListItem'
 
 export default {
   name: 'app',
+  data() {
+    return {
+      energyMix: []
+    }
+  },
+  mounted() {
+    fetch("https://api.carbonintensity.org.uk/generation")
+    .then(res => res.json())
+    .then(respObject => {
+      this.energyMix = respObject.data.generationmix
+    })
+  },
   components: {
-    HelloWorld
+    'list-item': ListItem
   }
 }
 </script>
