@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <h1>Energy Mix UK</h1>
-    <list-item v-bind:childEnergyMix="energyMix"></list-item>
+    <list-item v-bind:childEnergyMix="energyMix" :fromDate="fromDate" :toDate="toDate"></list-item>
   </div>
 </template>
 
@@ -12,14 +12,18 @@ export default {
   name: 'app',
   data() {
     return {
-      energyMix: []
+      energyMix: [],
+      fromDate: "",
+      toDate: ""
     }
   },
   mounted() {
     fetch("https://api.carbonintensity.org.uk/generation")
     .then(res => res.json())
     .then(respObject => {
-      this.energyMix = respObject.data.generationmix
+      this.energyMix = respObject.data.generationmix.map(fuelObj => Object.values(fuelObj));
+      this.fromDate = respObject.data.from;
+      this.toDate = respObject.data.to;
     })
   },
   components: {
